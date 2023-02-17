@@ -6,9 +6,14 @@ fn main() {
     println!("Guess the number!");
 
     let secret_number = rand::thread_rng().gen_range(1..=100);
-    println!("Secret number is {secret_number}");
+    let mut counter = 1;
+    let max_tries = 5;
 
     loop {
+        if counter > max_tries {
+            println!("Hint: {secret_number}");
+        }
+
         println!("Please input your guess.");
         let mut guess = String::new();
 
@@ -29,5 +34,6 @@ fn main() {
                 break;
             }
         }
+        counter += 1;
     }
 }
